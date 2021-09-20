@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="zone" *ngFor="let array of convertedOrders; index as inx">
+    <h3>Zone {{ inx + 1 }}</h3>
+    <div class="container-blocks" *ngFor="let blockArr of array">
+      <div
+        *ngFor="let block of blockArr"
+        class="block"
+        [ngClass]="{
+          'block-connect': block.joinedWith !== null,
+          'entry-yellow': block.joinedWith === null && block.status === 'open',
+          'entry-orange': block.joinedWith === null
+        }"
+      >
+        <h2>{{ block.sku }}</h2>
+        <h4>{{ block.defaultSku }}</h4>
+      </div>
+    </div>
+  </div>
+</div>
